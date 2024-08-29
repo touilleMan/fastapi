@@ -1,8 +1,12 @@
 from typing import Any, Dict, List, Optional, Union, cast
 
 from fastapi.exceptions import HTTPException
-from fastapi.openapi.models import OAuth2 as OAuth2Model
-from fastapi.openapi.models import OAuthFlows as OAuthFlowsModel
+# from fastapi.openapi.models import OAuth2 as OAuth2Model
+# from fastapi.openapi.models import OAuthFlows as OAuthFlowsModel
+class OAuth2Model:
+    pass
+class OAuthFlowsModel:
+    pass
 from fastapi.param_functions import Form
 from fastapi.security.base import SecurityBase
 from fastapi.security.utils import get_authorization_scheme_param

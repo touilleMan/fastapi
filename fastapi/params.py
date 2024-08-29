@@ -1,8 +1,10 @@
+from __future__ import annotations
 import warnings
 from enum import Enum
-from typing import Any, Callable, Dict, List, Optional, Sequence, Union
+from typing import Any, Callable, Dict, List, Optional, Sequence, Union, TYPE_CHECKING
 
-from fastapi.openapi.models import Example
+if TYPE_CHECKING:
+    from fastapi.openapi.models import Example
 from pydantic.fields import FieldInfo
 from typing_extensions import Annotated, deprecated
 

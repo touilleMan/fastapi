@@ -1,6 +1,5 @@
 from typing import Optional
 
-from fastapi.openapi.models import OpenIdConnect as OpenIdConnectModel
 from fastapi.security.base import SecurityBase
 from starlette.exceptions import HTTPException
 from starlette.requests import Request
@@ -66,6 +65,7 @@ class OpenIdConnect(SecurityBase):
             ),
         ] = True,
     ):
+        from fastapi.openapi.models import OpenIdConnect as OpenIdConnectModel
         self.model = OpenIdConnectModel(
             openIdConnectUrl=openIdConnectUrl, description=description
         )

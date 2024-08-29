@@ -3,8 +3,6 @@ from base64 import b64decode
 from typing import Optional
 
 from fastapi.exceptions import HTTPException
-from fastapi.openapi.models import HTTPBase as HTTPBaseModel
-from fastapi.openapi.models import HTTPBearer as HTTPBearerModel
 from fastapi.security.base import SecurityBase
 from fastapi.security.utils import get_authorization_scheme_param
 from pydantic import BaseModel
@@ -75,6 +73,7 @@ class HTTPBase(SecurityBase):
         description: Optional[str] = None,
         auto_error: bool = True,
     ):
+        from fastapi.openapi.models import HTTPBase as HTTPBaseModel
         self.model = HTTPBaseModel(scheme=scheme, description=description)
         self.scheme_name = scheme_name or self.__class__.__name__
         self.auto_error = auto_error
@@ -179,6 +178,7 @@ class HTTPBasic(HTTPBase):
             ),
         ] = True,
     ):
+        from fastapi.openapi.models import HTTPBase as HTTPBaseModel
         self.model = HTTPBaseModel(scheme="basic", description=description)
         self.scheme_name = scheme_name or self.__class__.__name__
         self.realm = realm
@@ -294,6 +294,7 @@ class HTTPBearer(HTTPBase):
             ),
         ] = True,
     ):
+        from fastapi.openapi.models import HTTPBearer as HTTPBearerModel
         self.model = HTTPBearerModel(bearerFormat=bearerFormat, description=description)
         self.scheme_name = scheme_name or self.__class__.__name__
         self.auto_error = auto_error
@@ -396,6 +397,7 @@ class HTTPDigest(HTTPBase):
             ),
         ] = True,
     ):
+        from fastapi.openapi.models import HTTPBase as HTTPBaseModel
         self.model = HTTPBaseModel(scheme="digest", description=description)
         self.scheme_name = scheme_name or self.__class__.__name__
         self.auto_error = auto_error

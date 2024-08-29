@@ -1,6 +1,5 @@
 from typing import Optional
 
-from fastapi.openapi.models import APIKey, APIKeyIn
 from fastapi.security.base import SecurityBase
 from starlette.exceptions import HTTPException
 from starlette.requests import Request
@@ -91,6 +90,7 @@ class APIKeyQuery(APIKeyBase):
             ),
         ] = True,
     ):
+        from fastapi.openapi.models import APIKey, APIKeyIn
         self.model: APIKey = APIKey(
             **{"in": APIKeyIn.query},  # type: ignore[arg-type]
             name=name,
@@ -186,6 +186,7 @@ class APIKeyHeader(APIKeyBase):
             ),
         ] = True,
     ):
+        from fastapi.openapi.models import APIKey, APIKeyIn
         self.model: APIKey = APIKey(
             **{"in": APIKeyIn.header},  # type: ignore[arg-type]
             name=name,
@@ -281,6 +282,7 @@ class APIKeyCookie(APIKeyBase):
             ),
         ] = True,
     ):
+        from fastapi.openapi.models import APIKey, APIKeyIn
         self.model: APIKey = APIKey(
             **{"in": APIKeyIn.cookie},  # type: ignore[arg-type]
             name=name,
